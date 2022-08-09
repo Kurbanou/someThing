@@ -3,6 +3,9 @@ const popBody = document.querySelector('.popup__content')
 const popCls = document.querySelector('.x')
 
 
+
+
+
 function openPopupInfo(){ // попап с информацией
     popupInfo.classList.toggle('popup_open')
     document.body.classList.toggle('open')
@@ -19,8 +22,16 @@ function openPopupInfo(){ // попап с информацией
 
 }
 
+popupInfo.addEventListener('click', e => { //закрываем папоп
+    let target = e.target
+    let its_popup = target == popBody || popBody.contains(target)
+    let its_button = target == popCls
+    if (!its_popup || its_button ) {
+        popClose()
+    }
+})
+
 
 function popClose (){
     openPopupInfo()
 }
-popCls.addEventListener('click', popClose)
